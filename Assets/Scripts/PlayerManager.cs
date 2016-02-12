@@ -6,9 +6,9 @@ public class PlayerManager : MonoBehaviour
 	private static PlayerManager _instance = null;
 	public static PlayerManager Instance { get { return _instance; } }
 
-	private float _tired = 0;
+	private static float _tired = 0;
 
-	public float Tired
+	public static float Tired
 	{
 		get
 		{
