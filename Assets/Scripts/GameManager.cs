@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 	private static GameManager _instance = null;
 	public static GameManager Instance { get { return _instance; } }
 
+	public static Building SelectedBuilding;
+
 	public delegate void HourChange(int hours);
 	public static event HourChange OnHourChange;
 

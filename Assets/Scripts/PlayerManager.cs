@@ -29,7 +29,12 @@ public class PlayerManager : MonoBehaviour
 	{
 		get
 		{
-			return 0;
+			float result = 7f;
+			if (GameManager.SelectedBuilding)
+			{
+				result += GameManager.SelectedBuilding.TiredModifier;
+			}
+			return result;
 		}
 	}
 
