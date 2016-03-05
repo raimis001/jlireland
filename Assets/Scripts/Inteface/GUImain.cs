@@ -42,7 +42,7 @@ public class GUImain : MonoBehaviour
 
 	public void GotoCity()
 	{
-		DialogMenu.CloseAll();
+		if (DialogMenu) DialogMenu.CloseAll();
 		GameManager.SelectedBuilding = null;
 	}
 
@@ -80,6 +80,11 @@ public class GUImain : MonoBehaviour
 				return new DialogParams() { Caption = "Ubags.", Description = string.Format("Ziedojiet... ziedojiet!. \nVienīgais patiesais ubags es esmu..."), AutoClose = false };
 		}
 		return null;
+	}
+
+	public void GoToBuilding(Building building)
+	{
+		GameManager.SelectedBuilding = building;
 	}
 
 	public static void ShowDialog(DialogKind dialog)

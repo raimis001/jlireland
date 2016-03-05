@@ -35,17 +35,15 @@ public class ParamsClass
 	}
 }
 
-public class Parameters
+public static class Parameters
 {
-	private Dictionary<ParamsKind, ParamsClass> Params = new Dictionary<ParamsKind, ParamsClass>();
+	private static Dictionary<ParamsKind, ParamsClass> Params = new Dictionary<ParamsKind, ParamsClass>();
 
-	internal ParamsClass this[ParamsKind index] {
-		get {
+	internal static ParamsClass get(ParamsKind index) {
 			return Params[index];
-		}
 	}
 
-	public Parameters()
+	public static void Init()
 	{
 		Params.Add(ParamsKind.TIRED, new ParamsClass() { Value = 0, MaxValue = 100 });
 		Params.Add(ParamsKind.HEALTH, new ParamsClass() { Value = 100, MaxValue = 100 });
@@ -53,7 +51,6 @@ public class Parameters
 
 	}
 }
-
 
 public class GameManager : MonoBehaviour
 {
@@ -67,18 +64,10 @@ public class GameManager : MonoBehaviour
 		}
 		set
 		{
-			bool oldPause = _gamePaused;
 			_gamePaused = value;
 			_instance.PauseButton.isOn = !value;
-
-			if (!_gamePaused && oldPause)
-			{
-				CurrentHour.Inc(1, CurrentHour.HourTime);
-			}
 		}
 	}
-
-	public static bool GameBreak;
 
 	private static Building _selectedBuilding;
 	public static Building SelectedBuilding {
@@ -91,12 +80,12 @@ public class GameManager : MonoBehaviour
 			if (_selectedBuilding)
 			{
 				GamePaused = true;
-				_instance.MainCamera.gameObject.SetActive(false);
 				_selectedBuilding.Open();
-			} else
+			}
+			else
 			{
-				GamePaused = false;
-				_instance.MainCamera.gameObject.SetActive(true);
+				_selectedBuilding = _instance.MapBuilding;
+				_selectedBuilding.Open();
 			}
 		}
 	}
@@ -104,20 +93,18 @@ public class GameManager : MonoBehaviour
 	public delegate void HourChange(int hours);
 	public static event HourChange OnHourChange;
 
-	public static DayClass CurrentHour = new DayClass();
 	public static Building CurrentWork;
 
 	public static PlayerStatus PlayerStatus = PlayerStatus.NONE;
 
-	internal static Parameters Parameters = new Parameters();
-
 	public static List<Office> BusinessList = new List<Office>();
 		
+	[Range(0.5f,5f)]
+	public float HourTime = 2.5f;
+	public Building MapBuilding;
+
 	[Header("Interface")]
 	public Toggle PauseButton;
-
-	public float HourTime = 2.5f;
-	public Camera MainCamera;
 
 	void Awake()
 	{
@@ -127,92 +114,38 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		CurrentHour.Time = 7;
-		DoHourChange();
-		CurrentHour.HourTime = HourTime;
-		CurrentHour.Inc(1, CurrentHour.HourTime);
+		Parameters.Init();
+		SelectedBuilding = MapBuilding;
+		DayClass.Init(7);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		CurrentHour.HourTime = HourTime;
+		DayClass.Update();
 	}
 
 	public void OnPauseGame(bool button)
 	{
-		bool oldPause = _gamePaused;
 		_gamePaused = !button;
-		if (!_gamePaused && oldPause)
-		{
-			CurrentHour.Inc(1, CurrentHour.HourTime);
-		}
 	}
 
 	public static void DoHourChange()
 	{
 
-		Parameters[ParamsKind.TIRED].Value += 4;
+		Parameters.get(ParamsKind.TIRED).Value += 4;
 
 		foreach (Office office in BusinessList)
 		{
-			if (office.Debt > 0)
-			{
-				if (Parameters[ParamsKind.MONEY].Value >= office.Debt)
-				{
-					Parameters[ParamsKind.MONEY].Value -= office.Debt;
-					office.Debt = 0;
-				}
-				else
-				{
-					office.Debt -= Parameters[ParamsKind.MONEY].Value;
-					Parameters[ParamsKind.MONEY].Value = 0;
-				}
-				continue;
-			}
-
-			if (CurrentHour.WeekChanged)
-			{
-				if (Parameters[ParamsKind.MONEY].Value >= office.Cost)
-				{
-					Parameters[ParamsKind.MONEY].Value -= office.Cost;
-				}
-				else
-				{
-					office.Debt += office.Cost;
-				}
-			}
-
-			if (!office.CanWork() || office.Debt > 0)
-			{
-				continue;
-			}
-			Parameters[ParamsKind.TIRED].Value += office.TiredModifier;
-			Parameters[ParamsKind.HEALTH].Value += office.HealthModifier;
-			Parameters[ParamsKind.MONEY].Value += office.Income;
-
-			//TODO ieviest comforta modifieri
+			office.Calculate();
 		}
-
 
 		if (SelectedBuilding)
 		{
-			Parameters[ParamsKind.TIRED].Value += SelectedBuilding.TiredModifier;
-
-			if (!SelectedBuilding.CanVisit())
-			{
-				SelectedBuilding.ShowCloseDialog();
-				SelectedBuilding = null;
-				if (OnHourChange != null) OnHourChange(1);
-				return;
-			}
+			SelectedBuilding.Calculate();
 		}
 
-		if (PlayerStatus == PlayerStatus.BAGGER)
-		{
-			Parameters[ParamsKind.MONEY].Value += SelectedBuilding.WorkSalary;
-			Parameters[ParamsKind.HEALTH].Value += SelectedBuilding.WorkHealth;
-		}
+
 
 		if (CurrentWork)
 		{
@@ -221,7 +154,6 @@ public class GameManager : MonoBehaviour
 				if (!CurrentWork.EqualsHash(SelectedBuilding))
 				{
 					//TODO: need goto work
-					GameBreak = true;
 					GamePaused = true;
 					GUImain.ShowDialog(DialogKind.GOTO_WORK);
 					if (OnHourChange != null) OnHourChange(1);
@@ -237,7 +169,7 @@ public class GameManager : MonoBehaviour
 					{
 						Instance.StartWork();
 					}
-					Parameters[ParamsKind.MONEY].Value += CurrentWork.WorkSalary;
+					Parameters.get(ParamsKind.MONEY).Value += CurrentWork.WorkSalary;
 				}
 				else
 				{
@@ -257,7 +189,7 @@ public class GameManager : MonoBehaviour
 		{
 			return -1;
 		}
-		if (Parameters[ParamsKind.TIRED].Value < 10)
+		if (Parameters.get(ParamsKind.TIRED).Value < 10)
 		{
 			//return -2;
 		}
@@ -267,11 +199,9 @@ public class GameManager : MonoBehaviour
 		}
 
 		GamePaused = true;
-		GameBreak = false;
 		PlayerStatus = PlayerStatus.SLEEP;
 
 		GUImain.ShowDialog(DialogKind.SLEEPING);
-		CurrentHour.Inc(hours, 1);
 
 		return 1;
 	}
@@ -279,7 +209,7 @@ public class GameManager : MonoBehaviour
 #region MONEY
 	public static bool CheckMoney(int money)
 	{
-		return money > 0 || Parameters[ParamsKind.MONEY].Value >= Mathf.Abs(money);
+		return money > 0 || Parameters.get(ParamsKind.MONEY).Value >= Mathf.Abs(money);
 	}
 
 	public static bool AddMoney(int money)
@@ -290,7 +220,7 @@ public class GameManager : MonoBehaviour
 			return false;
 		}
 
-		Parameters[ParamsKind.MONEY].Value += money;
+		Parameters.get(ParamsKind.MONEY).Value += money;
 		return true;
 	}
 #endregion
@@ -300,7 +230,6 @@ public class GameManager : MonoBehaviour
 	{
 		PlayerStatus = PlayerStatus.NONE;
 		SelectedBuilding = CurrentWork;
-		CurrentHour.Inc(1, 0);
 		StartWork();
 	}
 
@@ -308,29 +237,9 @@ public class GameManager : MonoBehaviour
 	{
 		PlayerStatus = PlayerStatus.WORKING;
 		GamePaused = false;
-		GameBreak = false;
 		GUImain.ShowDialog(DialogKind.WORKING);
 
 		Debug.Log("Start working");
-		CurrentHour.Inc(CurrentWork.WorkTime, 1);
-	}
-#endregion
-
-#region UBAGOŠANA
-	public void Bagger()
-	{
-		GameBreak = false;
-		PlayerStatus = PlayerStatus.BAGGER;
-		GUImain.ShowDialog(DialogKind.BAGGER);
-		GamePaused = false;
-	}
-	public void StopBagger()
-	{
-		GameBreak = false;
-		GamePaused = true;
-
-		PlayerStatus = PlayerStatus.NONE;
-		GUImain.CloseAllDialogs();
 	}
 #endregion
 

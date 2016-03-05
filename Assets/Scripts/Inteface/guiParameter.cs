@@ -16,17 +16,17 @@ public class guiParameter : guiEvent
 	// Use this for initialization
 	void Start()
 	{
-		Progress.value = 0;
+		if (Progress) Progress.value = 0;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		ParamsClass param = GameManager.Parameters[Parameter];
+		ParamsClass param = Parameters.get(Parameter);
 		if (ParamValue != param.Value)
 		{
-			Progress.value = param.Progress;
-			ValueText.text = param.ValueString;
+			if (Progress) Progress.value = param.Progress;
+			if (ValueText) ValueText.text = param.ValueString;
 			ParamValue = param.Value;
 		}
 	}

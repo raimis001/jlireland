@@ -44,19 +44,19 @@ public class BuildingWindows : MonoBehaviour
 
 	protected virtual void OnHourChange(int hour)
 	{
-		if (GameManager.CurrentHour.CloseLights())
+		if (DayClass.CloseLights())
 		{
 			CloseAll();
 			return;
 		}
-		if (GameManager.CurrentHour.DayLights())
+		if (DayClass.DayLights())
 		{
 			return;
 		}
 
 		foreach (SpriteRenderer win in windows)
 		{
-			if (win.gameObject.activeSelf && GameManager.CurrentHour.Hour > 0) continue;
+			if (win.gameObject.activeSelf && DayClass.Hour > 0) continue;
 
 			win.color = Random.ColorHSV();
 			win.gameObject.SetActive(Random.value < 0.1f);

@@ -9,6 +9,7 @@ public class guiDate : guiEvent
 	public Text HourText;
 	public Text DayText;
 	public Text WeekText;
+	public Text FloatText;
 
 	// Use this for initialization
 	void Start()
@@ -19,13 +20,13 @@ public class guiDate : guiEvent
 	// Update is called once per frame
 	void Update()
 	{
-
+		if (FloatText) FloatText.text = DayClass.HourSmooth.ToString("0.000");
 	}
 
 	protected override void UpdateHour(int hurs)
 	{
-		HourText.text = GameManager.CurrentHour.Hour.ToString();
-		DayText.text = GameManager.CurrentHour.Day.ToString();
-		WeekText.text = GameManager.CurrentHour.Week.ToString();
+		HourText.text = DayClass.Hour.ToString();
+		DayText.text = DayClass.Day.ToString();
+		WeekText.text = DayClass.Week.ToString();
 	}
 }

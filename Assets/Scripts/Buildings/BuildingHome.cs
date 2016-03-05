@@ -65,7 +65,7 @@ public class BuildingHome : Building
 
 	public void ChangeSleepHour(int hour)
 	{
-		int tired = Mathf.CeilToInt(GameManager.Parameters[ParamsKind.TIRED].Value / RestModifier);
+		int tired = Mathf.CeilToInt(Parameters.get(ParamsKind.TIRED).Value / RestModifier);
 
 		//Debug.Log("Change sleeping hour tired:" + GameManager.Parameters[ParamsKind.TIRED].Value.ToString("0.00") + " modifier:" + RestModifier.ToString("0.00"));
 		if (hour != 0)

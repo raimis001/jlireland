@@ -55,8 +55,8 @@ public class guiDialog : MonoBehaviour
 
 	public void Open(string caption, string note, bool autoclose)
 	{
-		CaptionText.text = caption;
-		NoteText.text = note;
+		if (CaptionText) CaptionText.text = caption;
+		if (NoteText) NoteText.text = note;
 
 		unitilClose = autoclose ? 4 : 0;
 		

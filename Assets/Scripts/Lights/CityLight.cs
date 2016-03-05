@@ -15,6 +15,5 @@ public class CityLight : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GetComponent<Light>().enabled = (GameManager.CurrentHour.Hour < 8 || GameManager.CurrentHour.Hour > 19);
-	}
+		GetComponent<Light>().enabled = !DayClass.DayLights();}
 }

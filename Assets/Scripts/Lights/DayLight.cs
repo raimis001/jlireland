@@ -32,7 +32,7 @@ public class DayLight : MonoBehaviour
 	{
 		if (EditorApplication.isPlaying)
 		{
-			CurrentHour = GameManager.CurrentHour.HourSmooth;
+			CurrentHour = DayClass.HourSmooth;
 		}
 
 		float dot = CurrentHour/24f;

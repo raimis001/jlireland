@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityStandardAssets.ImageEffects;
+
 
 public class BuildingLights : BuildingWindows
 {
@@ -45,7 +44,7 @@ public class BuildingLights : BuildingWindows
 
 	protected override void OnHourChange(int hour)
 	{
-		if (GameManager.CurrentHour.DayLights() || GameManager.CurrentHour.CloseLights())
+		if (DayClass.DayLights() || DayClass.CloseLights())
 		{
 			CloseAll();
 			return;

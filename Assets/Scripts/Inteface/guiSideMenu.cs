@@ -13,7 +13,7 @@ public class guiSideMenu : MonoBehaviour
 
 		for (int i = 0; i < Dialogs.Length; i++)
 		{
-			if (Dialogs[i] == null) return;
+			if (Dialogs[i] == null) continue;
 
 			if (i == dialog)
 			{

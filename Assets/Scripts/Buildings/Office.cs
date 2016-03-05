@@ -109,5 +109,41 @@ public class Office : Building
 		}
 	}
 
+	override public void Calculate()
+	{
+		if (Debt > 0)
+		{
+			if (Parameters.get(ParamsKind.MONEY).Value >= Debt)
+			{
+				Parameters.get(ParamsKind.MONEY).Value -= Debt;
+				Debt = 0;
+			}
+			else
+			{
+				Debt -= Parameters.get(ParamsKind.MONEY).Value;
+				Parameters.get(ParamsKind.MONEY).Value = 0;
+			}
+			return;
+		}
 
+		if (DayClass.WeekChanged)
+		{
+			if (Parameters.get(ParamsKind.MONEY).Value >= Cost)
+			{
+				Parameters.get(ParamsKind.MONEY).Value -= Cost;
+			}
+			else
+			{
+				Debt += Cost;
+			}
+		}
+
+		if (!CanWork() || Debt > 0)
+		{
+			return;
+		}
+		Parameters.get(ParamsKind.TIRED).Value += TiredModifier;
+		Parameters.get(ParamsKind.HEALTH).Value += HealthModifier;
+		Parameters.get(ParamsKind.MONEY).Value += Income;
+	}
 }

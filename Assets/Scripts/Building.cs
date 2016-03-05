@@ -114,23 +114,41 @@ public class Building : MonoBehaviour
 		if (UI) UI.SetActive(false);
 	}
 
+	public virtual void Calculate()
+	{
+		Parameters.get(ParamsKind.TIRED).Value += TiredModifier;
+
+		if (!CanVisit())
+		{
+			ShowCloseDialog();
+			return;
+		}
+		OnCalculate();
+	}
+
+	protected virtual void OnCalculate()
+	{
+
+	}
+
 	public bool CanVisit()
 	{
-		return (GameManager.CurrentHour.Hour >= VisitStart && GameManager.CurrentHour.Hour <= VisitEnd);
+		return (DayClass.Hour >= VisitStart && DayClass.Hour <= VisitEnd);
 	}
 
 	public bool CanWork()
 	{
-		return (GameManager.CurrentHour.Hour >= WorkStart && GameManager.CurrentHour.Hour <= WorkEnd && WeekDays[GameManager.CurrentHour.Day - 1].working);
+		return (DayClass.Hour >= WorkStart && DayClass.Hour <= WorkEnd && WeekDays[DayClass.Day - 1].working);
 	}
 
 	public bool NeedToWork()
 	{
-		return GameManager.CurrentHour.Hour == WorkStart - 1;
+		return DayClass.Hour == WorkStart - 1;
 	}
 
 	public void ShowCloseDialog()
 	{
+		GameManager.SelectedBuilding = null;
 		GUImain.ShowMessage("AIZVĒRTS!", string.Format("Nevari apmeklēt {0}.\nApmeklējuma laiks no {1} līdx {2}", Name, VisitStart, VisitEnd));
 	}
 

@@ -1,103 +1,81 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+
 public class DayClass
 {
-	internal float HourTime = 2;
-	internal bool WeekChanged = false;
+	
 
-	private const int weekHours = 168;
-	private const int dayHours = 24;
+	internal static bool WeekChanged = false;
 
-	private int _time;
+	private static int weekHours = 168;
+	private static int dayHours = 24;
 
-	internal int Time {
+	private static int _time;
+
+	internal static int Time {
 		get { return _time; }
 		set
 		{
 			int oldWeek = Week;
 			_time = value;
-
+			//Debug.Log("Time changed:" + _time);
 			WeekChanged = Week != oldWeek;
-			HourSmooth = Hour;
+			//HourSmooth = Hour;
 			GameManager.DoHourChange();
 
 		}
 	}
-	internal float HourSmooth;
-	internal int Hour {
+	internal static float HourSmooth;
+	internal static int Hour {
 		get {
 			return Time - Week * weekHours - (Day - 1) * dayHours;
 		}
 	}
-	internal int Day {
+	internal static int Day {
 		get {
 			return (Time - Week * weekHours) / dayHours + 1;
 		}
 	}
-	internal int Week {
+	internal static int Week {
 		get {
 			return Time / weekHours;
 		}
 	}
 
-	internal bool CloseLights()
+	internal static bool CloseLights()
 	{
 		return Hour == 7;
 	}
 
-	internal bool OpenLights()
+	internal static bool OpenLights()
 	{
 		return Hour == 19;
 	}
 
-	internal bool DayLights()
+	internal static bool DayLights()
 	{
 		return Hour > 7 && Hour < 19;
 	}
 
-	public void Inc(int hours, float time)
+	internal static void Update()
 	{
-		if (time == 0)
+		if (GameManager.GamePaused) return;
+
+		HourSmooth += UnityEngine.Time.smoothDeltaTime / GameManager.Instance.HourTime;
+
+		int h = Mathf.FloorToInt(HourSmooth);
+		if (h != Time)
 		{
-			Time += hours;
-			return;
-		}
-		GameManager.Instance.StartCoroutine(UpdateHour(hours, time));
-	}
-
-
-	IEnumerator UpdateHour(int hours, float time)
-	{
-
-		for (int i = 0; i < hours; i++)
-		{
-			yield return WaitForHour(time);
-			if (GameManager.GameBreak || GameManager.GamePaused)
-			{
-				yield break;
-			}
-		}
-
-		if (!GameManager.GamePaused)
-		{
-			Inc(1, HourTime);
+			//Debug.Log("Time changed:" + h);
+			Time = h;
 		}
 	}
 
-	IEnumerator WaitForHour(float time)
+	internal static void Init(int InitHour)
 	{
-		float delta = time;
-		while (delta > 0)
-		{
-			delta -= UnityEngine.Time.smoothDeltaTime;
-			HourSmooth += (1f / time) * UnityEngine.Time.smoothDeltaTime;
-			if (GameManager.GameBreak || GameManager.GamePaused)
-			{
-				yield break;
-			}
-			yield return null;
-		}
-		Time++;
-
+		HourSmooth = InitHour;
+		Time = InitHour;
 	}
 }
 
