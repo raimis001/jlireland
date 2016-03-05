@@ -6,37 +6,6 @@ public class PlayerManager : MonoBehaviour
 	private static PlayerManager _instance = null;
 	public static PlayerManager Instance { get { return _instance; } }
 
-	private static float _tired = 0;
-
-	public static float Tired
-	{
-		get
-		{
-			return _tired;
-		}
-		set
-		{
-			_tired = value;
-			if (_tired > 100)
-			{
-				_tired = 100;
-			}
-		}
-
-	}
-
-	public float TiredMidifier
-	{
-		get
-		{
-			float result = 7f;
-			if (GameManager.SelectedBuilding)
-			{
-				result += GameManager.SelectedBuilding.TiredModifier;
-			}
-			return result;
-		}
-	}
 
 	void Awake()
 	{
@@ -67,6 +36,5 @@ public class PlayerManager : MonoBehaviour
 
 	void OnHourChange(int hours)
 	{
-		Tired += TiredMidifier;
 	}
 }
