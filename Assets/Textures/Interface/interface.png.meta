@@ -1,0 +1,1262 @@
+fileFormatVersion: 2
+guid: 732adc46ecaf54844aaf58ae6a47e032
+timeCreated: 1455975677
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: interface_0
+    21300002: interface_1
+    21300004: interface_2
+    21300006: interface_3
+    21300008: interface_4
+    21300010: Panel_1
+    21300012: interface_6
+    21300014: interface_7
+    21300016: interface_8
+    21300018: interface_9
+    21300020: interface_10
+    21300022: interface_11
+    21300024: interface_12
+    21300026: interface_13
+    21300028: interface_14
+    21300030: interface_15
+    21300032: interface_16
+    21300034: interface_17
+    21300036: interface_18
+    21300038: interface_19
+    21300040: interface_20
+    21300042: interface_21
+    21300044: interface_22
+    21300046: interface_23
+    21300048: interface_24
+    21300050: interface_25
+    21300052: interface_26
+    21300054: interface_27
+    21300056: interface_28
+    21300058: interface_29
+    21300060: interface_30
+    21300062: interface_31
+    21300064: interface_32
+    21300066: interface_33
+    21300068: interface_34
+    21300070: interface_35
+    21300072: interface_36
+    21300074: interface_37
+    21300076: interface_38
+    21300078: interface_39
+    21300080: interface_40
+    21300082: interface_41
+    21300084: interface_42
+    21300086: interface_43
+    21300088: interface_44
+    21300090: interface_45
+    21300092: interface_46
+    21300094: interface_47
+    21300096: interface_48
+    21300098: interface_49
+    21300100: interface_50
+    21300102: interface_51
+    21300104: interface_52
+    21300106: interface_53
+    21300108: interface_54
+    21300110: interface_55
+    21300112: interface_56
+    21300114: interface_57
+    21300116: interface_58
+    21300118: interface_59
+    21300120: interface_60
+    21300122: interface_61
+    21300124: interface_62
+    21300126: interface_63
+    21300128: interface_64
+    21300130: interface_65
+    21300132: interface_66
+    21300134: interface_67
+    21300136: interface_68
+    21300138: interface_69
+    21300140: interface_70
+    21300142: interface_71
+    21300144: interface_72
+    21300146: interface_73
+    21300148: Panel_2
+    21300150: interface_75
+    21300152: interface_76
+    21300154: interface_77
+    21300156: interface_78
+    21300158: interface_79
+    21300160: interface_80
+    21300162: interface_81
+    21300164: interface_82
+    21300166: interface_83
+    21300168: interface_84
+    21300170: interface_85
+    21300172: interface_86
+    21300174: interface_87
+    21300176: interface_88
+    21300178: interface_89
+    21300180: interface_90
+    21300182: interface_91
+    21300184: interface_92
+    21300186: interface_93
+    21300188: interface_94
+    21300190: interface_95
+    21300192: interface_96
+    21300194: interface_97
+    21300196: Panel_3
+    21300198: interface_99
+    21300200: interface_100
+    21300202: interface_101
+    21300204: interface_102
+    21300206: interface_103
+    21300208: interface_104
+    21300210: interface_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: interface_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2013
+        width: 341
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 163, y: 0, z: 162, w: 0}
+      outline: []
+    - name: interface_1
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 2004
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 17}
+        - {x: -41, y: 4}
+        - {x: -41, y: -4}
+        - {x: -28, y: -17}
+        - {x: 41, y: -17}
+        - {x: 41, y: 17}
+    - name: interface_2
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 2004
+        width: 73
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 17}
+        - {x: -36.5, y: -17}
+        - {x: 36.5, y: -17}
+        - {x: 36.5, y: 17}
+    - name: interface_3
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 2004
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 17}
+        - {x: -41, y: -17}
+        - {x: 28, y: -17}
+        - {x: 41, y: -4}
+        - {x: 41, y: 4}
+        - {x: 28, y: 17}
+    - name: interface_4
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 2005
+        width: 134
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 5, z: 5, w: 5}
+      outline:
+      - - {x: -66, y: 16.5}
+        - {x: -67, y: 15.5}
+        - {x: -67, y: -16.5}
+        - {x: 67, y: -16.5}
+        - {x: 67, y: 16.5}
+    - name: Panel_1
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 1742
+        width: 516
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 223, y: 122, z: 217, w: 127}
+      outline:
+      - - {x: -258, y: 150}
+        - {x: -258, y: -150}
+        - {x: 258, y: -150}
+        - {x: 258, y: 150}
+    - name: interface_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1991
+        width: 336
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 161, y: 0, z: 159, w: 0}
+      outline: []
+    - name: interface_7
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1964
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 17}
+        - {x: -41, y: 4}
+        - {x: -41, y: -4}
+        - {x: -28, y: -17}
+        - {x: 41, y: -17}
+        - {x: 41, y: 17}
+    - name: interface_8
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 1964
+        width: 73
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 17.5}
+        - {x: -36.5, y: -17.5}
+        - {x: 36.5, y: -17.5}
+        - {x: 36.5, y: 17.5}
+    - name: interface_9
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 1964
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 17}
+        - {x: -41, y: -17}
+        - {x: 28, y: -17}
+        - {x: 41, y: -4}
+        - {x: 41, y: 4}
+        - {x: 28, y: 17}
+    - name: interface_10
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 1959
+        width: 134
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 5, z: 6, w: 5}
+      outline:
+      - - {x: -66, y: 16.5}
+        - {x: -67, y: 15.5}
+        - {x: -67, y: -16.5}
+        - {x: 67, y: -16.5}
+        - {x: 67, y: 16.5}
+    - name: interface_11
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1953
+        width: 344
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 165, y: 0, z: 162, w: 0}
+      outline: []
+    - name: interface_12
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1925
+        width: 80
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 16.5}
+        - {x: -40, y: 3.5}
+        - {x: -40, y: -3.5}
+        - {x: -27, y: -16.5}
+        - {x: 40, y: -16.5}
+        - {x: 40, y: 16.5}
+    - name: interface_13
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1925
+        width: 71
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 16.5}
+        - {x: -35.5, y: -16.5}
+        - {x: 35.5, y: -16.5}
+        - {x: 35.5, y: 16.5}
+    - name: interface_14
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1925
+        width: 80
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 16.5}
+        - {x: -40, y: -16.5}
+        - {x: 27, y: -16.5}
+        - {x: 40, y: -3.5}
+        - {x: 40, y: 3.5}
+        - {x: 27, y: 16.5}
+    - name: interface_15
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1941
+        width: 290
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 142, y: 3, z: 132, w: 3}
+      outline: []
+    - name: interface_16
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1928
+        width: 195
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 3, z: 3, w: 3}
+      outline: []
+    - name: interface_17
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1894
+        width: 344
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_18
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1868
+        width: 104
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 20}
+        - {x: -52, y: 15}
+        - {x: -52, y: -12}
+        - {x: -48, y: -20}
+        - {x: 52, y: -20}
+        - {x: 52, y: 20}
+    - name: interface_19
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 1868
+        width: 102
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: 20}
+        - {x: -51, y: -20}
+        - {x: 51, y: -20}
+        - {x: 51, y: 20}
+    - name: interface_20
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 1868
+        width: 104
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: 20}
+        - {x: -52, y: -20}
+        - {x: 48, y: -20}
+        - {x: 52, y: -9}
+        - {x: 52, y: 13}
+        - {x: 46, y: 20}
+    - name: interface_21
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1863
+        width: 344
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_22
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1801
+        width: 80
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 41}
+        - {x: -40, y: 30}
+        - {x: -40, y: -32}
+        - {x: -28, y: -39}
+        - {x: -19, y: -41}
+        - {x: 29, y: -41}
+        - {x: 40, y: -35}
+        - {x: 40, y: 35}
+        - {x: 25, y: 41}
+      - - {x: -26, y: -6}
+        - {x: -20, y: 16}
+        - {x: 17, y: 19}
+        - {x: 6, y: -26}
+      - - {x: -13, y: 22}
+        - {x: -22, y: 13}
+        - {x: -22, y: -14}
+        - {x: -14, y: -23}
+        - {x: 9, y: -23}
+        - {x: 22, y: -15}
+        - {x: 22, y: 10}
+        - {x: 13, y: 22}
+    - name: interface_23
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1845
+        width: 344
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_24
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1822
+        width: 104
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 20}
+        - {x: -52, y: 15}
+        - {x: -52, y: -12}
+        - {x: -48, y: -20}
+        - {x: 52, y: -20}
+        - {x: 52, y: 20}
+    - name: interface_25
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1822
+        width: 102
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: 20}
+        - {x: -51, y: -20}
+        - {x: 51, y: -20}
+        - {x: 51, y: 20}
+    - name: interface_26
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1822
+        width: 104
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: 20}
+        - {x: -52, y: -20}
+        - {x: 48, y: -20}
+        - {x: 52, y: -9}
+        - {x: 52, y: 13}
+        - {x: 46, y: 20}
+    - name: interface_27
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1813
+        width: 344
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_28
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1778
+        width: 162
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_29
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1778
+        width: 162
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_30
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1783
+        width: 64
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_31
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 1783
+        width: 194
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_32
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1783
+        width: 64
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_33
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1738
+        width: 65
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_34
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1738
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_35
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1737
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_36
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1735
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_37
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1740
+        width: 67
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_38
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1742
+        width: 95
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_39
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 1742
+        width: 95
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_40
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1695
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_41
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1690
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_42
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1693
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_43
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1693
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_44
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 1691
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: interface_45
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 1691
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_46
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1691
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_47
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1693
+        width: 60
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_48
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1692
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_49
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1692
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_50
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1692
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_51
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1692
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_52
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1692
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_53
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1692
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_66
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 1708
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_67
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1708
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_68
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1708
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Panel_2
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 1637
+        width: 344
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 22, z: 23, w: 15}
+      outline:
+      - - {x: -172, y: 48}
+        - {x: -172, y: -48}
+        - {x: 172, y: -48}
+        - {x: 172, y: 48}
+    - name: interface_75
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1655
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_76
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 1658
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_77
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1659
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_78
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1660
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_79
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 1664
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_80
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1659
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_81
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 1661
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_82
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1655
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_83
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1654
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_84
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 1654
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_85
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 1654
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_86
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1653
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_87
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1654
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_88
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1628
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_89
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1628
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_90
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 1632
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_91
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 1628
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_92
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1628
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_93
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1603
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_94
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1603
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_95
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 1603
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_96
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 1603
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_97
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1603
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Panel_3
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 1596
+        width: 203
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 21, y: 9, z: 18, w: 9}
+      outline:
+      - - {x: -101.5, y: 16.5}
+        - {x: -101.5, y: -16.5}
+        - {x: 101.5, y: -16.5}
+        - {x: 101.5, y: 16.5}
+    - name: interface_99
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1256
+        width: 205
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 91.5, y: 53.5}
+        - {x: 62.5, y: 84.5}
+        - {x: 34.5, y: 100.5}
+        - {x: -48.5, y: 100.5}
+        - {x: -93.5, y: 67.5}
+        - {x: -102.5, y: 23.5}
+        - {x: -102.5, y: -34.5}
+        - {x: -87.5, y: -65.5}
+        - {x: -54.5, y: -91.5}
+        - {x: -39.5, y: -100.5}
+        - {x: 44.5, y: -100.5}
+        - {x: 57.5, y: -99.5}
+        - {x: 96.5, y: -57.5}
+        - {x: 101.5, y: -25.5}
+        - {x: 101.5, y: 31.5}
+    - name: interface_5
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1707
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_54
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 1707
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_55
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1708
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: interface_56
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1692
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
