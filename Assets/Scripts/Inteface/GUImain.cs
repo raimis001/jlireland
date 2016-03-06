@@ -53,17 +53,17 @@ public class GUImain : MonoBehaviour
 
 	public void OpenWorkDialog()
 	{
-		DialogMenu.SwitchDialog(3);
+		DialogMenu.SwitchDialog((int)DialogKind.WORKINFO);
 	}
 
 	public void CloseWorkDialog()
 	{
-		DialogMenu.CloseDialog(3);
+		DialogMenu.CloseDialog((int)DialogKind.WORKINFO);
 	}
 
 	public static void ShowMessage(string caption, string note)
 	{
-		_instance.InfoDialog.Open(caption, note, true);
+		_instance.InfoDialog.Open(new DialogParams() {Caption = caption, Description = note, AutoClose = true});
 	}
 
 	public static DialogParams Dialog(int dialog, int hours = 0)
@@ -72,8 +72,6 @@ public class GUImain : MonoBehaviour
 		{
 			case 0:
 				return new DialogParams() {Caption = "Tev jādodas uz darbu!", Description = GameManager.CurrentWork.GoToWorkDescription() , AutoClose = false};
-			case 1:
-				return new DialogParams() { Caption = "Tu strādā!", Description = GameManager.CurrentWork.GoToWorkDescription(), AutoClose = false };
 			case 2:
 				return new DialogParams() { Caption = "Saldus sapņus...", Description = string.Format("Nolēmi pagulēt {0} stundas. ", hours), AutoClose = false };
 			case 6:

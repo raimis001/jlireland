@@ -20,7 +20,7 @@ public class guiDate : guiEvent
 	// Update is called once per frame
 	void Update()
 	{
-		if (FloatText) FloatText.text = DayClass.HourSmooth.ToString("0.000");
+		if (FloatText) FloatText.text = DayClass.TimeSmooth.ToString("0.000");
 	}
 
 	protected override void UpdateHour(int hurs)

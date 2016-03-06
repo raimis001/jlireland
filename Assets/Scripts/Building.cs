@@ -20,20 +20,38 @@ public class Building : MonoBehaviour
 	public GameObject UI;
 
 	public string Name;
-	[Multiline(3)]
+	[TextArea(3, 10)]
 	public string Description;
+
+	[Header("Visiting")]
+	public int VisitStart = 0;
+	public int VisitEnd = 24;
 
 	[Header("Working")]
 	public string WorkName;
-	public int WorkSalary;
-
 	public int WorkStart = 0;
 	public int WorkEnd = 24;
+
+	[Header("Parameters")]
+	public int WorkSalary;
 	public float WorkTired = 2;
 	public float WorkHealth = 0;
 
-	public int VisitStart = 0;
-	public int VisitEnd = 24;
+	
+	public virtual string ButtonText
+	{
+		get { return "Pieņemt darbu!"; }
+	}
+
+	public virtual DialogParams WorkingInfo
+	{
+		get
+		{
+			return new DialogParams() {Caption = "Tu strādā!", Description = GoToWorkDescription(), AutoClose = false };
+				
+		}
+	}
+
 
 	public WorkWeek[] WeekDays =
 	{
@@ -51,15 +69,7 @@ public class Building : MonoBehaviour
 	{
 		get
 		{
-			float result = 0;
-			if (GameManager.SelectedBuilding.EqualsHash(this))
-			{
-				result = 1;
-				if (GameManager.CurrentWork.EqualsHash(this) && CanWork())
-				{
-					result = WorkTired;
-				}
-			}
+			float result = GameManager.SelectedBuilding.EqualsHash(this) ? 1 : 0;
 			return result;
 		}
 	}
@@ -85,7 +95,7 @@ public class Building : MonoBehaviour
 				(WeekDays[5].working ? "Se" : "<color=red>Se:-</color>"),
 				(WeekDays[6].working ? "Sv" : "<color=red>Sv:-</color>")
 				);
-			return string.Format("{0}:00 - {1}:00 dienas: {2}", WorkStart, WorkEnd, week);
+			return string.Format("{0} - {1} d: {2}", WorkStart, WorkEnd, week);
 		}
 	}
 
@@ -118,17 +128,58 @@ public class Building : MonoBehaviour
 	{
 		Parameters.get(ParamsKind.TIRED).Value += TiredModifier;
 
+		//Check visiting
 		if (!CanVisit())
 		{
 			ShowCloseDialog();
 			return;
 		}
+
+		if (GameManager.CurrentWork)
+		{
+			if (!GameManager.CurrentWork.EqualsHash(this) && GameManager.CurrentWork.NeedToWork())
+			{
+				Debug.Log("Need goto work");
+				GameManager.GamePaused = true;
+				GUImain.ShowDialog(DialogKind.GOTO_WORK);
+				return;
+			}
+		}
+
+		if (GameManager.CurrentWork.EqualsHash(this))
+		{
+			if (CanWork())
+			{
+				if (GameManager.PlayerStatus != PlayerStatus.WORKING)
+				{
+					GameManager.PlayerStatus = PlayerStatus.WORKING;
+					GameManager.Instance.HourTime = 0.5f;
+					GameManager.GamePaused = false;
+					GUImain.ShowDialog(DialogKind.WORKING);
+					Debug.Log("Start working");
+				}
+
+				Parameters.get(ParamsKind.MONEY).Value += WorkSalary;
+				Parameters.get(ParamsKind.TIRED).Value += WorkTired;
+				Parameters.get(ParamsKind.HEALTH).Value += WorkHealth;
+
+				if (DayClass.Hour == WorkEnd)
+				{
+					GameManager.PlayerStatus = PlayerStatus.NONE;
+					GameManager.Instance.HourTime = 2f;
+					GameManager.GamePaused = true;
+					GUImain.CloseAllDialogs();
+					Debug.Log("End working");
+				}
+			}
+		}
+
 		OnCalculate();
 	}
 
 	protected virtual void OnCalculate()
 	{
-
+		
 	}
 
 	public bool CanVisit()
@@ -154,7 +205,7 @@ public class Building : MonoBehaviour
 
 	public string GoToWorkDescription()
 	{
-		return string.Format("Darbs par {0}.\nJāstrādā no {1} līdz {2}.\nMaksa stundā {3}", Name, WorkStart, WorkEnd, WorkSalary);
+		return string.Format("Darbs par {0}.\nJāstrādā no {1} līdz {2}.\nMaksa stundā {3}", WorkName, WorkStart, WorkEnd, WorkSalary);
 	}
 
 	void OnMouseUp()
@@ -175,6 +226,15 @@ public class Building : MonoBehaviour
 	public virtual void StartWorking()
 	{
 		GameManager.CurrentWork = this;
+	}
+
+	public virtual void StopWorking()
+	{
+	}
+
+	public virtual void QuitWorking()
+	{
+		GameManager.CurrentWork = null;
 	}
 
 	protected virtual void SelectBuilding()

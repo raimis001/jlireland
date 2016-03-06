@@ -36,6 +36,7 @@ public enum DialogKind
 	GOTO_WORK = 0,
 	WORKING = 1,
 	SLEEPING = 2,
+	WORKINFO = 3,
 	BAGGER = 6
 }
 

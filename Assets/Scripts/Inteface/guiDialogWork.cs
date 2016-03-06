@@ -22,20 +22,21 @@ public class guiDialogWork : guiDialog
 
 	void OnEnable()
 	{
-		Open();
 	}
-	public void Open()
+
+	override public void Open()
 	{
 		if (GameManager.SelectedBuilding == null)
 		{
-			//Close();
+			if (AcceptWork) AcceptWork.interactable = false;
 			return;
 		}
 
 		if (TxtWorkName) TxtWorkName.text = GameManager.SelectedBuilding.WorkName;
-		if (TxtWorkHours) TxtWorkHours.text = string.Format("{0} līdz {1}", GameManager.SelectedBuilding.WorkStart, GameManager.SelectedBuilding.WorkEnd);
+		if (TxtWorkHours) TxtWorkHours.text = GameManager.SelectedBuilding.WorkString;
 		if (TxtWorkSalary) TxtWorkSalary.text = GameManager.SelectedBuilding.WorkSalary.ToString();
-		if (AcceptWork) AcceptWork.interactable = GameManager.CurrentWork == null || GameManager.CurrentWork.GetHashCode() != GameManager.SelectedBuilding.GetHashCode();
+		if (AcceptWork) AcceptWork.interactable = !GameManager.CurrentWork.EqualsHash(GameManager.SelectedBuilding);
+		if (ButtonText) ButtonText.text = GameManager.SelectedBuilding.ButtonText;
 
 		//gameObject.SetActive(true);
 	}

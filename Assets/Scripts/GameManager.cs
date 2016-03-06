@@ -145,41 +145,6 @@ public class GameManager : MonoBehaviour
 			SelectedBuilding.Calculate();
 		}
 
-
-
-		if (CurrentWork)
-		{
-			if (CurrentWork.NeedToWork())
-			{
-				if (!CurrentWork.EqualsHash(SelectedBuilding))
-				{
-					//TODO: need goto work
-					GamePaused = true;
-					GUImain.ShowDialog(DialogKind.GOTO_WORK);
-					if (OnHourChange != null) OnHourChange(1);
-					return;
-				}
-			}
-
-			if (CurrentWork.EqualsHash(SelectedBuilding))
-			{
-				if (SelectedBuilding.CanWork())
-				{
-					if (PlayerStatus != PlayerStatus.WORKING)
-					{
-						Instance.StartWork();
-					}
-					Parameters.get(ParamsKind.MONEY).Value += CurrentWork.WorkSalary;
-				}
-				else
-				{
-					PlayerStatus = PlayerStatus.NONE;
-					GamePaused = true;
-					GUImain.CloseAllDialogs();
-				}
-			}
-		}
-
 		if (OnHourChange != null) OnHourChange(1);
 	}
 
@@ -230,16 +195,7 @@ public class GameManager : MonoBehaviour
 	{
 		PlayerStatus = PlayerStatus.NONE;
 		SelectedBuilding = CurrentWork;
-		StartWork();
-	}
-
-	public void StartWork()
-	{
-		PlayerStatus = PlayerStatus.WORKING;
-		GamePaused = false;
-		GUImain.ShowDialog(DialogKind.WORKING);
-
-		Debug.Log("Start working");
+		DayClass.IncHour();
 	}
 #endregion
 

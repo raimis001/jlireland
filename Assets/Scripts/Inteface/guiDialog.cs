@@ -7,6 +7,8 @@ public class DialogParams
 	public string Caption;
 	public string Description;
 	public bool AutoClose;
+	public bool ShowClose = false;
+	public string CloseText;
 }
 
 public class guiDialog : MonoBehaviour
@@ -51,9 +53,10 @@ public class guiDialog : MonoBehaviour
 		{
 			gameObject.SetActive(true);
 		}
+		Open();
 	}
 
-	public void Open(string caption, string note, bool autoclose)
+	protected void Open(string caption, string note, bool autoclose)
 	{
 		if (CaptionText) CaptionText.text = caption;
 		if (NoteText) NoteText.text = note;
@@ -63,7 +66,12 @@ public class guiDialog : MonoBehaviour
 		gameObject.SetActive(true);
 	}
 
-	public void Close()
+	public virtual void Open()
+	{
+		
+	}
+
+	public virtual void Close()
 	{
 		unitilClose = 0;
 		gameObject.SetActive(false);

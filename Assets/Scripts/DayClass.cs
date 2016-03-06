@@ -26,7 +26,12 @@ public class DayClass
 
 		}
 	}
-	internal static float HourSmooth;
+	internal static float TimeSmooth;
+
+	internal static float HourSmooth
+	{
+		get { return TimeSmooth - Mathf.FloorToInt(TimeSmooth) + Hour; }
+	}
 	internal static int Hour {
 		get {
 			return Time - Week * weekHours - (Day - 1) * dayHours;
@@ -55,16 +60,16 @@ public class DayClass
 
 	internal static bool DayLights()
 	{
-		return Hour > 7 && Hour < 19;
+		return Hour > 7 && Hour < 21;
 	}
 
 	internal static void Update()
 	{
 		if (GameManager.GamePaused) return;
 
-		HourSmooth += UnityEngine.Time.smoothDeltaTime / GameManager.Instance.HourTime;
+		TimeSmooth += UnityEngine.Time.smoothDeltaTime / GameManager.Instance.HourTime;
 
-		int h = Mathf.FloorToInt(HourSmooth);
+		int h = Mathf.FloorToInt(TimeSmooth);
 		if (h != Time)
 		{
 			//Debug.Log("Time changed:" + h);
@@ -72,9 +77,15 @@ public class DayClass
 		}
 	}
 
+	internal static void IncHour()
+	{
+		TimeSmooth += 1;
+		Time = Mathf.FloorToInt(TimeSmooth);
+	}
+
 	internal static void Init(int InitHour)
 	{
-		HourSmooth = InitHour;
+		TimeSmooth = InitHour;
 		Time = InitHour;
 	}
 }

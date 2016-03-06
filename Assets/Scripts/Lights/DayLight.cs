@@ -14,6 +14,8 @@ public class DayLight : MonoBehaviour
 	public Color CurrentColor;
 	public float Intesity;
 
+	[Header("Setup day")]
+	public float MinIntensity = 0.2f;
 	public Gradient nightDayFogColor;
 	public AnimationCurve fogDensityCurve;
 
@@ -42,6 +44,10 @@ public class DayLight : MonoBehaviour
 		//GetComponent<Light>().color = CurrentColor;
 		RenderSettings.ambientLight = CurrentColor;
 
-		GetComponent<Light>().intensity = Intesity + 0.2f;
+		Light light = GetComponent<Light>();
+		if (!light) return;
+
+		light.intensity = Intesity + 0.2f;
+		transform.eulerAngles = new Vector3(60f, 360f * dot, 0);
 	}
 }
