@@ -7,7 +7,8 @@ public enum ParamsKind
 	HEALTH,
 	TIRED,
 	MONEY,
-	COMFORT
+	COMFORT,
+	IQ
 }
 
 public enum WEEKDAYS
@@ -26,7 +27,8 @@ public enum PlayerStatus
 	NONE,
 	SLEEP,
 	WORKING,
-	BAGGER
+	BAGGER,
+	STUDIE
 }
 
 [Flags]
@@ -37,7 +39,8 @@ public enum DialogKind
 	WORKING = 1,
 	SLEEPING = 2,
 	WORKINFO = 3,
-	BAGGER = 6
+	BAGGER = 6,
+	SCHOOL = 4
 }
 
 public static class Helper
@@ -77,6 +80,13 @@ public static class Helper
 	public static bool EqualsHash(this Building building, Building tobuilding)
 	{
 		return building.GetHash() == tobuilding.GetHash();
+	}
+
+	public static T GetRandomEnum<T>()
+	{
+		Array A = Enum.GetValues(typeof(T));
+		T V = (T)A.GetValue(Random.Range(0, A.Length));
+		return V;
 	}
 }
 

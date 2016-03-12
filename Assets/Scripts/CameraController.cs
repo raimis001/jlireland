@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class CameraController : MonoBehaviour
@@ -21,7 +22,8 @@ public class CameraController : MonoBehaviour
 			MoveEnabled = true;
 			CombinedMovement = true;
 		}
-		else {
+		else
+		{
 			ZoomEnabled = false;
 			MoveEnabled = false;
 			CombinedMovement = false;
@@ -37,7 +39,14 @@ public class CameraController : MonoBehaviour
 	private Vector3 _moveVector;
 	private float _xMove;
 	private float _yMove;
+	private float _yMoveO;
 	private float _zMove;
+
+
+	private void Start()
+	{
+	}
+
 
 	void Update()
 	{
@@ -84,24 +93,12 @@ public class CameraController : MonoBehaviour
 
 			if (xAxisValue != 0)
 			{
-				if (CombinedMovement)
-				{
-					_xMove += xAxisValue * axisSpeed;
-				}
-				else {
-					_xMove = xAxisValue * axisSpeed;
-				}
+				_xMove = (CombinedMovement ? _xMove : 0) + xAxisValue * axisSpeed;
 			}
 
 			if (zAxisValue != 0)
 			{
-				if (CombinedMovement)
-				{
-					_zMove += zAxisValue * axisSpeed;
-				}
-				else {
-					_zMove = zAxisValue * axisSpeed;
-				}
+				_zMove = (CombinedMovement ? _zMove : 0) + zAxisValue * axisSpeed;
 			}
 
 		}
@@ -113,30 +110,21 @@ public class CameraController : MonoBehaviour
 		// Zoom Camera in or out
 		if (ZoomEnabled)
 		{
-			if (Input.GetAxis("Mouse ScrollWheel") < 0)
-			{
-				_yMove = scrollSpeed;
-			}
-			else if (Input.GetAxis("Mouse ScrollWheel") > 0)
-			{
-				_yMove = -scrollSpeed;
-			}
-			else {
-				_yMove = 0;
-			}
+			_yMove = -scrollSpeed*Input.GetAxis("Mouse ScrollWheel");
 		}
 		else {
-			_zMove = 0;
+			_yMove = 0;
 		}
-
+		_yMoveO = Mathf.Lerp(_yMoveO, _yMove, 0.1f);
 		//move the object
-		MoveMe(_xMove, _yMove, _zMove);
+		MoveMe(_xMove, _yMoveO, _zMove);
 	}
 
 	private void MoveMe(float x, float y, float z)
 	{
-		_moveVector = (new Vector3(x * horizontalScrollSpeed,
-		y * verticalScrollSpeed, z * horizontalScrollSpeed) * Time.deltaTime);
+		_moveVector = (new Vector3(x * horizontalScrollSpeed,y * verticalScrollSpeed, z * horizontalScrollSpeed) * Time.deltaTime);
 		transform.Translate(_moveVector, Space.World);
+		//Debug.Log(transform.position.y);
+		transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y, 60, 160) , transform.position.z);
 	}
 }

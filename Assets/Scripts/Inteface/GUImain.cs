@@ -53,7 +53,12 @@ public class GUImain : MonoBehaviour
 
 	public void OpenWorkDialog()
 	{
-		DialogMenu.SwitchDialog((int)DialogKind.WORKINFO);
+		if (GameManager.SelectedBuilding)
+		{
+			GameManager.SelectedBuilding.OpenWorkDialog();		
+		}
+	
+		//DialogMenu.SwitchDialog((int)DialogKind.WORKINFO);
 	}
 
 	public void CloseWorkDialog()

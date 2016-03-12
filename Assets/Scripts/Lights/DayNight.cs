@@ -30,7 +30,6 @@ public class DayNight : MonoBehaviour
 
 
 	Light mainLight;
-	Skybox sky;
 	Material skyMat;
 
 	void Start()

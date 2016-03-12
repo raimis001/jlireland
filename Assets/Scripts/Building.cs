@@ -24,13 +24,11 @@ public class Building : MonoBehaviour
 	public string Description;
 
 	[Header("Visiting")]
-	public int VisitStart = 0;
-	public int VisitEnd = 24;
+	public WorkingHours VisitingHours;
 
 	[Header("Working")]
 	public string WorkName;
-	public int WorkStart = 0;
-	public int WorkEnd = 24;
+	public WorkingHours WorkingHours;
 
 	[Header("Parameters")]
 	public int WorkSalary;
@@ -52,19 +50,6 @@ public class Building : MonoBehaviour
 		}
 	}
 
-
-	public WorkWeek[] WeekDays =
-	{
-		new WorkWeek() { day = WEEKDAYS.PIRMDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.OTRDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.TRESDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.CETURTDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.PIEKTDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.SESTDIENA, working = true },
-		new WorkWeek() { day = WEEKDAYS.SVETDIENA, working = true },
-	};
-
-
 	public virtual float TiredModifier
 	{
 		get
@@ -78,7 +63,7 @@ public class Building : MonoBehaviour
 	{
 		get
 		{
-			return WorkEnd - WorkStart;
+			return WorkingHours.End - WorkingHours.Start;
 		}
 	}
 
@@ -86,16 +71,7 @@ public class Building : MonoBehaviour
 	{
 		get
 		{
-			string week = string.Format("{0} {1} {2} {3} {4} {5} {6}",
-				(WeekDays[0].working ? "P" : "<color=red>P:-</color>"),
-				(WeekDays[1].working ? "O" : "<color=red>O:-</color>"),
-				(WeekDays[2].working ? "T" : "<color=red>T:-</color>"),
-				(WeekDays[3].working ? "C" : "<color=red>C:-</color>"),
-				(WeekDays[4].working ? "Pk" : "<color=red>Pk:-</color>"),
-				(WeekDays[5].working ? "Se" : "<color=red>Se:-</color>"),
-				(WeekDays[6].working ? "Sv" : "<color=red>Sv:-</color>")
-				);
-			return string.Format("{0} - {1} d: {2}", WorkStart, WorkEnd, week);
+			return WorkingHours.WorkString;
 		}
 	}
 
@@ -122,6 +98,11 @@ public class Building : MonoBehaviour
 	{
 		if (Prefab) Prefab.SetActive(false);
 		if (UI) UI.SetActive(false);
+	}
+
+	public virtual void OpenWorkDialog()
+	{
+		GUImain.ShowDialog(DialogKind.WORKINFO);
 	}
 
 	public virtual void Calculate()
@@ -163,7 +144,7 @@ public class Building : MonoBehaviour
 				Parameters.get(ParamsKind.TIRED).Value += WorkTired;
 				Parameters.get(ParamsKind.HEALTH).Value += WorkHealth;
 
-				if (DayClass.Hour == WorkEnd)
+				if (DayClass.Hour == WorkingHours.End)
 				{
 					GameManager.PlayerStatus = PlayerStatus.NONE;
 					GameManager.Instance.HourTime = 2f;
@@ -182,40 +163,46 @@ public class Building : MonoBehaviour
 		
 	}
 
-	public bool CanVisit()
+	public bool CanVisit(bool travel = false)
 	{
-		return (DayClass.Hour >= VisitStart && DayClass.Hour <= VisitEnd);
+		return VisitingHours.CanWork(travel);
 	}
 
 	public bool CanWork()
 	{
-		return (DayClass.Hour >= WorkStart && DayClass.Hour <= WorkEnd && WeekDays[DayClass.Day - 1].working);
+		return WorkingHours.CanWork();
 	}
 
 	public bool NeedToWork()
 	{
-		return DayClass.Hour == WorkStart - 1;
+		return DayClass.Hour == WorkingHours.Start - 1;
 	}
 
 	public void ShowCloseDialog()
 	{
+		StopWorking();
 		GameManager.SelectedBuilding = null;
-		GUImain.ShowMessage("AIZVĒRTS!", string.Format("Nevari apmeklēt {0}.\nApmeklējuma laiks no {1} līdx {2}", Name, VisitStart, VisitEnd));
+		GUImain.ShowMessage("AIZVĒRTS!", string.Format("Nevari apmeklēt {0}.\nApmeklējuma laiks no {1} līdx {2}", Name, VisitingHours.Start, VisitingHours.End));
 	}
 
 	public string GoToWorkDescription()
 	{
-		return string.Format("Darbs par {0}.\nJāstrādā no {1} līdz {2}.\nMaksa stundā {3}", WorkName, WorkStart, WorkEnd, WorkSalary);
+		return string.Format("Darbs par {0}.\nJāstrādā no {1} līdz {2}.\nMaksa stundā {3}", WorkName, WorkingHours.Start, WorkingHours.End, WorkSalary);
 	}
 
 	void OnMouseUp()
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return;
 
-		if (!CanVisit())
+		if (!CanVisit(true))
 		{
 			ShowCloseDialog();
 			return;
+		}
+
+		if (!(this is MapBuilding))
+		{
+			DayClass.IncHour();
 		}
 
 		Prefab.SetActive(true);

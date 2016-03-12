@@ -346,11 +346,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 185736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9259ee5b466614da802d000b81ec23, type: 3}
+  m_Script: {fileID: 11500000, guid: 78fcae0b361478946b948a501ce0634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CaptionText: {fileID: 11410648}
   NoteText: {fileID: 11488880}
+  ButtonText: {fileID: 11418450}
 --- !u!114 &11418450
 MonoBehaviour:
   m_ObjectHideFlags: 1

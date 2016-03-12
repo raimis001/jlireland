@@ -48,6 +48,7 @@ public static class Parameters
 		Params.Add(ParamsKind.TIRED, new ParamsClass() { Value = 0, MaxValue = 100 });
 		Params.Add(ParamsKind.HEALTH, new ParamsClass() { Value = 100, MaxValue = 100 });
 		Params.Add(ParamsKind.MONEY, new ParamsClass() { Value = 5000, MaxValue = -1 });
+		Params.Add(ParamsKind.IQ, new ParamsClass() { Value = 10, MaxValue = 180 });
 
 	}
 }
@@ -169,6 +170,12 @@ public class GameManager : MonoBehaviour
 		GUImain.ShowDialog(DialogKind.SLEEPING);
 
 		return 1;
+	}
+
+	public static void Continue(float hourSpeed)
+	{
+		Instance.HourTime = hourSpeed;
+		GamePaused = false;
 	}
 
 #region MONEY

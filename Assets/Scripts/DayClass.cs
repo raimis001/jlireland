@@ -2,10 +2,39 @@
 using System.Collections;
 using UnityEngine;
 
+[Serializable]
+public class WorkingHours
+{
+	public int Start;
+	public int End = 24;
+	public bool[] Days = {true, true, true, true, true, true, true};
+
+	public bool CanWork(bool travel = false)
+	{
+		return (DayClass.Hour >= (travel ? Start - 1 : Start) && DayClass.Hour <= End && Days[DayClass.Day - 1]);
+	}
+	public string WorkString
+	{
+		get
+		{
+			string week = string.Format("{0} {1} {2} {3} {4} {5} {6}",
+							(Days[0] ? "P" : "<color=red>P:-</color>"),
+							(Days[1] ? "O" : "<color=red>O:-</color>"),
+							(Days[2] ? "T" : "<color=red>T:-</color>"),
+							(Days[3] ? "C" : "<color=red>C:-</color>"),
+							(Days[4] ? "Pk" : "<color=red>Pk:-</color>"),
+							(Days[5] ? "Se" : "<color=red>Se:-</color>"),
+							(Days[6] ? "Sv" : "<color=red>Sv:-</color>")
+							);
+			return string.Format("{0} - {1} d: {2}", Start, End, week);
+		}
+	}
+
+}
+
+
 public class DayClass
 {
-	
-
 	internal static bool WeekChanged = false;
 
 	private static int weekHours = 168;

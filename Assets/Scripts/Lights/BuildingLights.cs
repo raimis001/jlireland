@@ -49,6 +49,11 @@ public class BuildingLights : BuildingWindows
 			CloseAll();
 			return;
 		}
+		if (!Building)
+		{
+			CloseAll();
+			return;
+		}
 
 		if (Building is Office && !Building.CanVisit() || !Building.CanWork())
 		{
