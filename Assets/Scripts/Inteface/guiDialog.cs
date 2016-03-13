@@ -18,6 +18,7 @@ public class guiDialog : MonoBehaviour
 	public Text NoteText;
 	public Text ButtonText;
 
+
 	float unitilClose = 0;
 
 	void Awake()
