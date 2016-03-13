@@ -34,4 +34,13 @@ public class guiCourse : MonoBehaviour
 		if (HourText) HourText.text = (course.Hours - course.PrecessedHours).ToString();
 		if (TimeText) TimeText.text = course.Working.WorkString;
 	}
+	public void SetValues(Treat course)
+	{
+		if (CourseText) CourseText.text = course.Name;
+		if (MoneyText) MoneyText.text = course.Money.ToString();
+		if (IqText) IqText.text = course.Heath.ToString();
+		if (HourText) HourText.text = (course.Hours - course.PrecessedHours).ToString();
+		if (TimeText) TimeText.text = "";// course.Working.WorkString;
+	}
+
 }

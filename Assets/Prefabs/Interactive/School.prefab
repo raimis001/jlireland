@@ -23456,6 +23456,7 @@ MonoBehaviour:
       End: 24
       Days: 01010101010000
     Status: 0
+    PrecessedHours: 0
   - Name: Praktiskais kurss
     Money: 300
     Hours: 48
@@ -23465,6 +23466,7 @@ MonoBehaviour:
       End: 24
       Days: 01010101010000
     Status: 0
+    PrecessedHours: 0
   - Name: "Praktisk\u0101s nodarb\u012Bbas"
     Money: 500
     Hours: 72
@@ -23474,9 +23476,10 @@ MonoBehaviour:
       End: 24
       Days: 01010101010000
     Status: 0
+    PrecessedHours: 0
   dailyStudies:
   - Name: "Koled\u017Ea"
-    Money: 3000
+    Money: 8000
     Hours: 80
     IQ: 20
     Working:
@@ -23484,6 +23487,7 @@ MonoBehaviour:
       End: 15
       Days: 01010101010000
     Status: 0
+    PrecessedHours: 0
   - Name: Bakalaurs
     Money: 5000
     Hours: 150
@@ -23493,6 +23497,7 @@ MonoBehaviour:
       End: 18
       Days: 01010101010000
     Status: 0
+    PrecessedHours: 0
   - Name: "Ma\u0123istrs"
     Money: 20000
     Hours: 300
@@ -23502,6 +23507,7 @@ MonoBehaviour:
       End: 20
       Days: 00010101010000
     Status: 0
+    PrecessedHours: 0
   nightStudies:
   - Name: Lekcijas
     Money: 1000
@@ -23512,6 +23518,7 @@ MonoBehaviour:
       End: 23
       Days: 01010101010101
     Status: 0
+    PrecessedHours: 0
   - Name: Vieslekcijas
     Money: 5000
     Hours: 20
@@ -23521,6 +23528,7 @@ MonoBehaviour:
       End: 23
       Days: 01010101010101
     Status: 0
+    PrecessedHours: 0
   - Name: "Priv\u0101tapm\u0101c\u012Bba"
     Money: 10000
     Hours: 30
@@ -23530,6 +23538,7 @@ MonoBehaviour:
       End: 23
       Days: 01010101010101
     Status: 0
+    PrecessedHours: 0
   courseLine: {fileID: 0}
   dailyLine: {fileID: 0}
   nightLine: {fileID: 0}

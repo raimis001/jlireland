@@ -28,7 +28,8 @@ public enum PlayerStatus
 	SLEEP,
 	WORKING,
 	BAGGER,
-	STUDIE
+	STUDIE,
+	HEALING
 }
 
 [Flags]
@@ -40,7 +41,8 @@ public enum DialogKind
 	SLEEPING = 2,
 	WORKINFO = 3,
 	BAGGER = 6,
-	SCHOOL = 4
+	SCHOOL = 4,
+	HOSPITAL = 5
 }
 
 public static class Helper
