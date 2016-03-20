@@ -51,7 +51,7 @@ public static class Helper
 
 	public static void Shuffle<T>(this List<T> list)
 	{
-		list.Sort((a, b) => 1 - 2 * Random.Range(0, 1));
+		list.Sort((a, b) => 1 - 2 * UnityEngine.Random.Range(0, 1));
 	}
 
 	public static T Pull<T>(this List<T> list)
@@ -62,6 +62,15 @@ public static class Helper
 		}
 		T result = list[0];
 		list.RemoveAt(0);
+		return result;
+	}
+	public static T Random<T>(this List<T> list)
+	{
+		if (list.Count < 1)
+		{
+			return default(T);
+		}
+		T result = list[UnityEngine.Random.Range(0,list.Count)];
 		return result;
 	}
 
@@ -87,7 +96,7 @@ public static class Helper
 	public static T GetRandomEnum<T>()
 	{
 		Array A = Enum.GetValues(typeof(T));
-		T V = (T)A.GetValue(Random.Range(0, A.Length));
+		T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
 		return V;
 	}
 }
