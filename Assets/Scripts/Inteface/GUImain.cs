@@ -66,6 +66,14 @@ public class GUImain : MonoBehaviour
 		DialogMenu.CloseDialog((int)DialogKind.WORKINFO);
 	}
 
+	public void OpenActionDialog()
+	{
+		if (GameManager.SelectedBuilding)
+		{
+			GameManager.SelectedBuilding.OpenActionDialog();
+		}
+	}
+
 	public static void ShowMessage(string caption, string note)
 	{
 		_instance.InfoDialog.Open(new DialogParams() {Caption = caption, Description = note, AutoClose = true});
@@ -79,8 +87,6 @@ public class GUImain : MonoBehaviour
 				return new DialogParams() {Caption = "Tev jādodas uz darbu!", Description = GameManager.CurrentWork.GoToWorkDescription() , AutoClose = false};
 			case 2:
 				return new DialogParams() { Caption = "Saldus sapņus...", Description = string.Format("Nolēmi pagulēt {0} stundas. ", hours), AutoClose = false };
-			case 6:
-				return new DialogParams() { Caption = "Ubags.", Description = string.Format("Ziedojiet... ziedojiet!. \nVienīgais patiesais ubags es esmu..."), AutoClose = false };
 		}
 		return null;
 	}

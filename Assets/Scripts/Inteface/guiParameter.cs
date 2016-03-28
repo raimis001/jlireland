@@ -28,7 +28,13 @@ public class guiParameter : guiEvent
 			if (Progress) Progress.value = param.Progress;
 			if (ValueText) ValueText.text = param.ValueString;
 			ParamValue = param.Value;
+			ParamsChanged(param);
 		}
+	}
+
+	protected virtual void ParamsChanged(ParamsClass param)
+	{
+		
 	}
 
 	protected override void UpdateHour(int hurs)

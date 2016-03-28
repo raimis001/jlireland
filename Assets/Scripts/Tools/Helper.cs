@@ -8,7 +8,8 @@ public enum ParamsKind
 	TIRED,
 	MONEY,
 	COMFORT,
-	IQ
+	IQ,
+	WELL
 }
 
 public enum WEEKDAYS
@@ -29,7 +30,8 @@ public enum PlayerStatus
 	WORKING,
 	BAGGER,
 	STUDIE,
-	HEALING
+	HEALING,
+	FREELANCER
 }
 
 [Flags]
@@ -42,7 +44,8 @@ public enum DialogKind
 	WORKINFO = 3,
 	BAGGER = 6,
 	SCHOOL = 4,
-	HOSPITAL = 5
+	HOSPITAL = 5,
+	FREELANCER = 6,
 }
 
 public static class Helper

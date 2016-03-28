@@ -117,5 +117,15 @@ public class DayClass
 		TimeSmooth = InitHour;
 		Time = InitHour;
 	}
+
+	internal static string GetDate(float time)
+	{
+		int week = (int)(time / weekHours);
+		int day = (int)((time - week * weekHours) / dayHours + 1);
+		int hour = (int)(time - week * weekHours - (day - 1) * dayHours);
+
+		return string.Format("nedēļa:{0} diena:{1} stunda:{2} ", week, day, hour);
+	}
+
 }
 

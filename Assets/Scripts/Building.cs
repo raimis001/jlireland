@@ -105,6 +105,11 @@ public class Building : MonoBehaviour
 		GUImain.ShowDialog(DialogKind.WORKINFO);
 	}
 
+	public virtual void OpenActionDialog()
+	{
+		
+	}
+
 	public virtual void Calculate()
 	{
 		Parameters.get(ParamsKind.TIRED).Value += TiredModifier;
@@ -155,6 +160,7 @@ public class Building : MonoBehaviour
 			}
 		}
 
+		Debug.Log("Call calculate");
 		OnCalculate();
 	}
 

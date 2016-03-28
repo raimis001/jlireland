@@ -108,7 +108,7 @@ public class Office : Building
 				CurrentLevel++;
 		}
 	}
-
+	/*
 	override public void Calculate()
 	{
 		if (Debt > 0)
@@ -146,4 +146,5 @@ public class Office : Building
 		Parameters.get(ParamsKind.HEALTH).Value += HealthModifier;
 		Parameters.get(ParamsKind.MONEY).Value += Income;
 	}
+	*/
 }

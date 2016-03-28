@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2539bbb4f03424ca1e61b0436cf5d1, type: 3}
+  m_Name: Uni2D_AssetTable
+  m_EditorClassIdentifier: 
+  m_oAtlasPathGUIDEntries:
+  - key: Assets/Root/Uni2D/Samples/Sprite Animation Viewer/Atlases/TextureAtlas_AllAnims.prefab
+    genericValue: 18284b4832a8946828bfc30a5cce7cef
+  m_oClipPathGUIDEntries:
+  - key: Assets/Root/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Stand02.prefab
+    genericValue: 9318702077fdb4dde8e336a2d883985e
+  - key: Assets/Root/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Stand01.prefab
+    genericValue: bedbe84c41310469392cb3716b677974
+  - key: Assets/Root/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Walk02.prefab
+    genericValue: f98a561d7f5f641629093f089afd52a8
+  - key: Assets/Root/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Walk01.prefab
+    genericValue: f0f60aeefc4eb4665b8e7c81e6313235
+  - key: Assets/Shaders/Uni2D/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Stand02.prefab
+    genericValue: 9318702077fdb4dde8e336a2d883985e
+  - key: Assets/Shaders/Uni2D/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Stand01.prefab
+    genericValue: bedbe84c41310469392cb3716b677974
+  - key: Assets/Shaders/Uni2D/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Walk02.prefab
+    genericValue: f98a561d7f5f641629093f089afd52a8
+  - key: Assets/Shaders/Uni2D/Uni2D/Samples/Sprite Animation Viewer/SpriteAnimationClips/AnimationClip_Walk01.prefab
+    genericValue: f0f60aeefc4eb4665b8e7c81e6313235
+  - key: Assets/AnimationClip.prefab
+    genericValue: a01ca21a634ff4b48b2504f55fafe882
+  m_oTextureImportGUIDEntries:
+  - key: b8fb246047887e74ca14dd241f1acc66
+    genericValue: 37877cb9-c1f7-42e5-91c1-5611c0fe0847
+  - key: d758a3b3cb8c71b4f877753310bf16f9
+    genericValue: 9c6f1572-9d22-42b2-8f6d-5725f5ba689d
+  - key: 353f7b74c9d13ce4a8ffee085192555a
+    genericValue: d7d503ad-e30a-4e4f-9352-345e5930e028
+  - key: 94d308665c399b94e982e283af4155f1
+    genericValue: 53643cb3-14dc-4fac-a603-cdc2014d615c
+  - key: a178b5cac3d6ede4597ba77b49880ce2
+    genericValue: 525688cf-08b4-4302-9608-9ea651187481
+  - key: b7c5e47b7de63c141ba45424d3dd0c43
+    genericValue: 5085335b-1ca5-4f84-8948-2bed48c0e862
+  m_oTextureGUIDAtlasEntries: []
+  m_oTextureGUIDClipEntries: []
+  m_oTextureGUIDSpritePrefabEntries:
+  - key: d758a3b3cb8c71b4f877753310bf16f9
+    genericValue:
+    - 60830ea5e2fe8554ca4b8483c4bbe5bb
+  - key: 353f7b74c9d13ce4a8ffee085192555a
+    genericValue:
+    - 92739536390391349ae59a06aa022949
+  m_oAtlasGUIDSpritePrefabEntries: []
