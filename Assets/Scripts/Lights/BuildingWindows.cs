@@ -28,6 +28,8 @@ public class BuildingWindows : MonoBehaviour
 
 	protected virtual void CloseAll()
 	{
+		if (windows == null) return;
+
 		foreach (SpriteRenderer win in windows)
 		{
 			win.gameObject.SetActive(false);

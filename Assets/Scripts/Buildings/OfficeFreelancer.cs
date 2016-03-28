@@ -15,15 +15,18 @@ public class FreelancerWork
 
 	public static FreelancerWork Create()
 	{
-		int money = Random.Range(10, 20);
+		int iq = Random.Range(-10, 10) + (int)Parameters.get(ParamsKind.IQ).Value;
 		int hours = Random.Range(100, 300);
+
+		int money = Random.Range(10, 20) * (iq / 18) * hours ;
+		money = (money/100)*100;
 
 		FreelancerWork work = new FreelancerWork()
 		{
 			Name = WorkNames.Random(),
 			Hours = hours,
-			Money = money * hours,
-			IQ = Mathf.Floor(30 + (money - 10) * 2.5f),
+			Money = money,
+			IQ = iq
 		};
 
 		return work;
@@ -43,7 +46,7 @@ public class FreelancerWork
 	{
 		get
 		{
-			return Mathf.CeilToInt(Hours/8f);
+			return Mathf.CeilToInt(Hours/6f);
 			
 		}
 	}
@@ -59,8 +62,19 @@ public class OfficeFreelancer : Office
 	public Text MoneyText;
 	public GameObject NewWork;
 	public GameObject Working;
+	public GameObject Empty;
+	public GameObject Grid;
 
 	private FreelancerWork Work;
+	private int AvailableWorks = 5;
+
+	public override float TiredModifier
+	{
+		get
+		{
+			return GameManager.PlayerStatus == PlayerStatus.FREELANCER ? WorkTired : 1;
+		}
+	}
 
 	public override DialogParams WorkingInfo {
 		get {
@@ -78,57 +92,80 @@ public class OfficeFreelancer : Office
 	protected override void Start()
 	{
 		base.Start();
-		if (Work == null)
+		if (Work == null && AvailableWorks > 0)
 		{
 			Work = FreelancerWork.Create();
 		}
-
-
 	}
 
 	public override void OpenWorkDialog()
 	{
 		if (Work == null)
 		{
+			NoWorks();
 			return;
 		}
-		if (NewWork)
-		{
-			NewWork.SetActive(!Work.Started);
-		}
+		RedrawData();
 
-		if (Working)
-		{
-			Working.SetActive(Work.Started);
-		}
+		GUImain.ShowDialog(DialogKind.FREELANCER);
+	}
+
+	void RedrawData()
+	{
+		if (NewWork) NewWork.SetActive(!Work.Started);
+		if (Working) Working.SetActive(Work.Started);
+		if (Empty) Empty.SetActive(false);
+		if (Grid) Grid.SetActive(true);
+		if (CaptionText) CaptionText.gameObject.SetActive(true);
 
 		CaptionText.text = Work.Name;
 		IqText.text = Work.IQ.ToString();
 		TimeText.text = Work.Days.ToString();
 		MoneyText.text = Work.Money.ToString();
-
-		GUImain.ShowDialog(DialogKind.FREELANCER);
 	}
 
 	public override void StartWorking()
 	{
 		if (Work == null)
 		{
+			NoWorks();
 			return;
 		}
 
 		Work.Started = true;
-		if (NewWork)
+
+		if (NewWork) NewWork.SetActive(false);
+		if (Working) Working.SetActive(true);
+		if (Empty) Empty.SetActive(false);
+		if (Grid) Grid.SetActive(true);
+		if (CaptionText) CaptionText.gameObject.SetActive(true);
+
+
+		Work.DueDate = DayClass.Time + Work.Days * 24;
+		Work.DueHours = Work.Hours;
+
+	}
+
+	void NoWorks()
+	{
+		if (NewWork) NewWork.SetActive(false);
+		if (Working) Working.SetActive(false);
+		if (Empty) Empty.SetActive(true);
+		if (Grid) Grid.SetActive(false);
+		if (CaptionText) CaptionText.gameObject.SetActive(false);
+	}
+
+	public void OtherWork()
+	{
+		if (AvailableWorks < 1)
 		{
-			NewWork.SetActive(false);
-		}
-		if (Working)
-		{
-			Working.SetActive(true);
+			NoWorks();
+			return;
 		}
 
-		Work.DueDate = DayClass.Time + Work.Hours;
-		Work.DueHours = Work.Hours;
+		AvailableWorks --;
+		Work = FreelancerWork.Create();
+		RedrawData();
 
 	}
 
@@ -152,6 +189,12 @@ public class OfficeFreelancer : Office
 
 	protected override void OnCalculate()
 	{
+		if (DayClass.Hour == 1)
+		{
+			//Jauni darbi
+			AvailableWorks = 5;
+		}
+
 		if (GameManager.PlayerStatus != PlayerStatus.FREELANCER || Work == null)
 		{
 			return;
@@ -165,7 +208,6 @@ public class OfficeFreelancer : Office
 		}
 
 		Work.DueHours -= Parameters.get(ParamsKind.IQ).Value/Work.IQ;
-		Debug.Log(Work.DueHours);
 
 		if (Work.DueHours <= 0)
 		{

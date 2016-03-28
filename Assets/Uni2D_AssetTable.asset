@@ -13,7 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_oAtlasPathGUIDEntries: []
   m_oClipPathGUIDEntries: []
-  m_oTextureImportGUIDEntries: []
+  m_oTextureImportGUIDEntries:
+  - key: 353f7b74c9d13ce4a8ffee085192555a
+    genericValue: d926cd3e-1791-4278-9cd9-38c4e9177826
+  - key: 94d308665c399b94e982e283af4155f1
+    genericValue: eefb59bf-5e3d-44cc-9605-257d66e88e69
+  - key: a178b5cac3d6ede4597ba77b49880ce2
+    genericValue: f42d101c-9afe-4a3a-afbe-809167ce021a
+  - key: b8fb246047887e74ca14dd241f1acc66
+    genericValue: 140e231e-c33f-4993-a00a-c27f4a56efda
+  - key: b7c5e47b7de63c141ba45424d3dd0c43
+    genericValue: ec73dfcb-1c00-4af3-8dd9-5719d51ea1da
+  - key: d758a3b3cb8c71b4f877753310bf16f9
+    genericValue: ec93d3f2-315f-49b2-9088-81477b184eab
   m_oTextureGUIDAtlasEntries: []
   m_oTextureGUIDClipEntries: []
   m_oTextureGUIDSpritePrefabEntries: []

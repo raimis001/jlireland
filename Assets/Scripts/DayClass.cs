@@ -11,20 +11,37 @@ public class WorkingHours
 
 	public bool CanWork(bool travel = false)
 	{
-		return (DayClass.Hour >= (travel ? Start - 1 : Start) && DayClass.Hour <= End && Days[DayClass.Day - 1]);
+		if (Start == End)
+		{
+			return true;
+		}
+		if (!Days[DayClass.Day - 1])
+		{
+			return false;
+		}
+
+		int start = (travel ? Start - 1 : Start);
+		int hour = DayClass.Hour;
+
+		if (Start < End)
+		{
+			return (hour >= start && hour <= End);
+		}
+
+		return hour >= start || hour <= End;
 	}
 	public string WorkString
 	{
 		get
 		{
 			string week = string.Format("{0} {1} {2} {3} {4} {5} {6}",
-							(Days[0] ? "P" : "<color=red>P:-</color>"),
-							(Days[1] ? "O" : "<color=red>O:-</color>"),
-							(Days[2] ? "T" : "<color=red>T:-</color>"),
-							(Days[3] ? "C" : "<color=red>C:-</color>"),
-							(Days[4] ? "Pk" : "<color=red>Pk:-</color>"),
-							(Days[5] ? "Se" : "<color=red>Se:-</color>"),
-							(Days[6] ? "Sv" : "<color=red>Sv:-</color>")
+							(Days[0] ? "P" : "<color=#06440E>P:-</color>"),
+							(Days[1] ? "O" : "<color=#06440E>O:-</color>"),
+							(Days[2] ? "T" : "<color=#06440E>T:-</color>"),
+							(Days[3] ? "C" : "<color=#06440E>C:-</color>"),
+							(Days[4] ? "Pk" : "<color=#06440E>Pk:-</color>"),
+							(Days[5] ? "Se" : "<color=#06440E>Se:-</color>"),
+							(Days[6] ? "Sv" : "<color=#06440E>Sv:-</color>")
 							);
 			return string.Format("{0} - {1} d: {2}", Start, End, week);
 		}

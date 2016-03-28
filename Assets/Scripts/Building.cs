@@ -24,7 +24,9 @@ public class Building : MonoBehaviour
 	public string Description;
 
 	[Header("Visiting")]
+	public int VisitingIQ;
 	public WorkingHours VisitingHours;
+
 
 	[Header("Working")]
 	public string WorkName;
@@ -96,8 +98,10 @@ public class Building : MonoBehaviour
 
 	public virtual void CLose()
 	{
+		StopWorking();
 		if (Prefab) Prefab.SetActive(false);
 		if (UI) UI.SetActive(false);
+		GUImain.CloseAllDialogs();
 	}
 
 	public virtual void OpenWorkDialog()
@@ -160,7 +164,6 @@ public class Building : MonoBehaviour
 			}
 		}
 
-		Debug.Log("Call calculate");
 		OnCalculate();
 	}
 
@@ -188,7 +191,7 @@ public class Building : MonoBehaviour
 	{
 		StopWorking();
 		GameManager.SelectedBuilding = null;
-		GUImain.ShowMessage("AIZVĒRTS!", string.Format("Nevari apmeklēt {0}.\nApmeklējuma laiks no {1} līdx {2}", Name, VisitingHours.Start, VisitingHours.End));
+		GUImain.ShowMessage("AIZVĒRTS!", string.Format("Nevari apmeklēt {0}.\nApmeklējuma laiks: \n{1}", Name, VisitingHours.WorkString));
 	}
 
 	public string GoToWorkDescription()
@@ -196,9 +199,16 @@ public class Building : MonoBehaviour
 		return string.Format("Darbs par {0}.\nJāstrādā no {1} līdz {2}.\nMaksa stundā {3}", WorkName, WorkingHours.Start, WorkingHours.End, WorkSalary);
 	}
 
-	void OnMouseUp()
+	private void OnMouseUp()
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return;
+
+
+		if (VisitingIQ > Parameters.get(ParamsKind.IQ).Value)
+		{
+			GUImain.ShowMessage("ZINĀŠANAS!", "Tavs zināšanu līmenis ir pārāk zems! \nNepieciešamais IQ ir " + VisitingIQ);
+			return;
+		}
 
 		if (!CanVisit(true))
 		{
@@ -211,7 +221,6 @@ public class Building : MonoBehaviour
 			DayClass.IncHour();
 		}
 
-		Prefab.SetActive(true);
 		GameManager.SelectedBuilding = this;
 		SelectBuilding();
 	}

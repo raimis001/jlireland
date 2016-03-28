@@ -25,16 +25,15 @@ public class guiParameter : guiEvent
 		ParamsClass param = Parameters.get(Parameter);
 		if (ParamValue != param.Value)
 		{
-			if (Progress) Progress.value = param.Progress;
-			if (ValueText) ValueText.text = param.ValueString;
-			ParamValue = param.Value;
 			ParamsChanged(param);
+			ParamValue = param.Value;
 		}
 	}
 
 	protected virtual void ParamsChanged(ParamsClass param)
 	{
-		
+		if (Progress) Progress.value = param.Progress;
+		if (ValueText) ValueText.text = param.ValueString;
 	}
 
 	protected override void UpdateHour(int hurs)

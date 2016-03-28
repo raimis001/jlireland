@@ -22,13 +22,9 @@ public class BuildingHome : Building
 	public Furniture[] Centers;
 
 	public override float TiredModifier {
-		get {
-			if (GameManager.PlayerStatus == PlayerStatus.SLEEP)
-			{
-				return -4 - RestModifier;
-			}
-
-			return 0f;
+		get
+		{
+			return GameManager.PlayerStatus == PlayerStatus.SLEEP ? -4 - RestModifier : 0; 
 		}
 	}
 

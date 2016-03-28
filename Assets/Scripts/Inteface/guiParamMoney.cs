@@ -12,11 +12,13 @@ public class guiParamMoney : guiParameter
 		float money = param.Value;
 		if (money < 1000000)
 		{
+			Debug.Log("Les than milj");
 			if (ValueText) ValueText.text = param.ValueString;
 			if (MiljonText) MiljonText.text = "0";
 			return;
 		}
 
+		Debug.Log("Ower miljon");
 		int milj = Mathf.FloorToInt(money/1000000);
 		if (MiljonText) MiljonText.text = milj.ToString();
 

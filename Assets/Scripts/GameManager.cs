@@ -46,9 +46,9 @@ public static class Parameters
 	public static void Init()
 	{
 		Params.Add(ParamsKind.TIRED, new ParamsClass() { Value = 0, MaxValue = 100 });
-		Params.Add(ParamsKind.HEALTH, new ParamsClass() { Value = 50, MaxValue = 100 });
+		Params.Add(ParamsKind.HEALTH, new ParamsClass() { Value = 100, MaxValue = 100 });
 		Params.Add(ParamsKind.MONEY, new ParamsClass() { Value = 5000, MaxValue = -1 });
-		Params.Add(ParamsKind.IQ, new ParamsClass() { Value = 30, MaxValue = 180 });
+		Params.Add(ParamsKind.IQ, new ParamsClass() { Value = 0, MaxValue = 180 });
 		Params.Add(ParamsKind.WELL, new ParamsClass() {Value = 0, MaxValue = 100 });
 	}
 }
@@ -76,8 +76,26 @@ public class GameManager : MonoBehaviour
 			return _selectedBuilding;
 		}
 		set {
+
+			if (Parameters.get(ParamsKind.TIRED).Value >= 90)
+			{
+				if (_selectedBuilding is BuildingHome)
+				{
+					GUImain.ShowTiredMessage();
+					return;
+				}
+
+				if (_selectedBuilding) _selectedBuilding.CLose();
+
+				_selectedBuilding = _instance.HomeBuilding;
+				_selectedBuilding.Open();
+				GUImain.ShowTiredMessage();
+				return;
+			}
+
 			if (_selectedBuilding) _selectedBuilding.CLose();
 			_selectedBuilding = value;
+
 			if (_selectedBuilding)
 			{
 				GamePaused = true;
@@ -103,6 +121,7 @@ public class GameManager : MonoBehaviour
 	[Range(0.5f,5f)]
 	public float HourTime = 2.5f;
 	public Building MapBuilding;
+	public Building HomeBuilding;
 
 	[Header("Interface")]
 	public Toggle PauseButton;
@@ -110,12 +129,12 @@ public class GameManager : MonoBehaviour
 	void Awake()
 	{
 		_instance = this;
+		Parameters.Init();
 	}
 
 	// Use this for initialization
 	void Start()
 	{
-		Parameters.Init();
 		SelectedBuilding = MapBuilding;
 		DayClass.Init(7);
 	}
@@ -135,11 +154,29 @@ public class GameManager : MonoBehaviour
 	{
 
 		Parameters.get(ParamsKind.TIRED).Value += 4;
+		Parameters.get(ParamsKind.WELL).Value -= 1;
 
 		foreach (Office office in BusinessList)
 		{
-			office.Calculate();
+			office.CalculateOffice();
 		}
+
+		if (Parameters.get(ParamsKind.TIRED).Value >= 90)
+		{
+			Parameters.get(ParamsKind.HEALTH).Value -= 10;
+			if (!(SelectedBuilding is BuildingHome))
+			{
+				SelectedBuilding.CLose();
+				GamePaused = true;
+
+				SelectedBuilding = _instance.HomeBuilding;
+			}
+			if (PlayerStatus != PlayerStatus.NONE && PlayerStatus != PlayerStatus.SLEEP)
+			{
+				PlayerStatus = PlayerStatus.NONE;
+			}
+		} 
+
 
 		if (SelectedBuilding)
 		{
@@ -147,29 +184,6 @@ public class GameManager : MonoBehaviour
 		}
 
 		if (OnHourChange != null) OnHourChange(1);
-	}
-
-	public static int DoSleep(int hours)
-	{
-		if (!(SelectedBuilding is BuildingHome))
-		{
-			return -1;
-		}
-		if (Parameters.get(ParamsKind.TIRED).Value < 10)
-		{
-			//return -2;
-		}
-		if (PlayerStatus != PlayerStatus.NONE)
-		{
-			return -3;
-		}
-
-		GamePaused = true;
-		PlayerStatus = PlayerStatus.SLEEP;
-
-		GUImain.ShowDialog(DialogKind.SLEEPING);
-
-		return 1;
 	}
 
 	public static void Continue(float hourSpeed)

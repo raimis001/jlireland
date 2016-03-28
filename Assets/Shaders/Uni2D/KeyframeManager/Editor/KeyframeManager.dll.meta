@@ -2,8 +2,23 @@ fileFormatVersion: 2
 guid: b6d6761e234d54c0fbd01f263486aa53
 labels:
 - Uni2DID_a3f0ed3b-66c1-40b9-9f83-f743a71c94d0
-MonoAssemblyImporter:
+PluginImporter:
   serializedVersion: 1
   iconMap: {}
   executionOrder: {}
+  isPreloaded: 0
+  platformData:
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
+      enabled: 1
+      settings:
+        DefaultValueInitialized: true
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

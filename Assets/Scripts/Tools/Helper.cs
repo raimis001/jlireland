@@ -46,6 +46,9 @@ public enum DialogKind
 	SCHOOL = 4,
 	HOSPITAL = 5,
 	FREELANCER = 6,
+	NEED_REST = 7,
+	BAR = 8,
+	GYM = 9
 }
 
 public static class Helper
