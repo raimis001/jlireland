@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEditor;
 using Random = UnityEngine.Random;
 
 
@@ -54,7 +53,7 @@ public class DayLight : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (EditorApplication.isPlaying)
+		if (Application.isPlaying)
 		{
 			CurrentHour = DayClass.HourSmooth;
 		}

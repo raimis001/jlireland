@@ -89,17 +89,15 @@ public class OfficeFreelancer : Office
 	}
 
 
-	protected override void Start()
+
+	public override void OpenWorkDialog()
 	{
-		base.Start();
+
 		if (Work == null && AvailableWorks > 0)
 		{
 			Work = FreelancerWork.Create();
 		}
-	}
 
-	public override void OpenWorkDialog()
-	{
 		if (Work == null)
 		{
 			NoWorks();
