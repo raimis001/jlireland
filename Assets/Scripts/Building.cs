@@ -219,12 +219,15 @@ public class Building : MonoBehaviour
 		}
 
 		GameManager.SelectedBuilding = this;
+		Quest.Execute(this);
 		SelectBuilding();
 	}
 
 	public virtual void StartWorking()
 	{
 		GameManager.CurrentWork = this;
+		Quest.ExecuteWorking(this);
+		GUImain.CloseAllDialogs();
 	}
 
 	public virtual void StopWorking()

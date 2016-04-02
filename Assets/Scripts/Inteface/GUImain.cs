@@ -17,6 +17,10 @@ public class GUImain : MonoBehaviour
 	public Tutorial Tutorial;
 	public GameObject Gizmos;
 
+	[Header("Settings")]
+	public GameObject SettingsDialog;
+	public Toggle[] VSync;
+
 	[HideInInspector]
 	public guiSideMenu DialogMenu;
 
@@ -59,7 +63,7 @@ public class GUImain : MonoBehaviour
 
 	public void ShowInfo()
 	{
-		
+		DialogMenu.SwitchDialog(2);
 	}
 
 	public void OpenWorkDialog()
@@ -166,4 +170,24 @@ public class GUImain : MonoBehaviour
 		Gizmos.SetActive(state);
 	}
 
+	public void ExitGame()
+	{
+		Application.Quit();
+	}
+
+	public void OpenSettings()
+	{
+		for (int i = 0; i < VSync.Length; i++)
+		{
+			VSync[i].isOn = i == QualitySettings.vSyncCount;
+		}
+
+		SettingsDialog.SetActive(true);
+	}
+
+	public void SwitchVsync(int sync)
+	{
+		//Debug.Log("Switch vsync:" + sync);
+		QualitySettings.vSyncCount = sync;
+	}
 }

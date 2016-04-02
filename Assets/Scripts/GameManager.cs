@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ParamsClass
@@ -47,7 +48,7 @@ public static class Parameters
 	{
 		Params.Add(ParamsKind.TIRED, new ParamsClass() { Value = 0, MaxValue = 100 });
 		Params.Add(ParamsKind.HEALTH, new ParamsClass() { Value = 100, MaxValue = 100 });
-		Params.Add(ParamsKind.MONEY, new ParamsClass() { Value = 5000, MaxValue = -1 });
+		Params.Add(ParamsKind.MONEY, new ParamsClass() { Value = 100, MaxValue = -1 });
 		Params.Add(ParamsKind.IQ, new ParamsClass() { Value = 0, MaxValue = 180 });
 		Params.Add(ParamsKind.WELL, new ParamsClass() {Value = 0, MaxValue = 100 });
 	}
@@ -152,9 +153,11 @@ public class GameManager : MonoBehaviour
 
 	public static void DoHourChange()
 	{
-
-		Parameters.get(ParamsKind.TIRED).Value += 4;
-		Parameters.get(ParamsKind.WELL).Value -= 1;
+		if (SelectedBuilding && !(SelectedBuilding is BuildingGym || SelectedBuilding is BuildingCaffe))
+		{
+			Parameters.get(ParamsKind.WELL).Value -= 1;
+		}
+		Parameters.get(ParamsKind.TIRED).Value += 2 + 2 * (1 - Parameters.get(ParamsKind.WELL).Progress);
 
 		foreach (Office office in BusinessList)
 		{
@@ -163,10 +166,10 @@ public class GameManager : MonoBehaviour
 
 		if (Parameters.get(ParamsKind.TIRED).Value >= 90)
 		{
-			Parameters.get(ParamsKind.HEALTH).Value -= 10;
+			Parameters.get(ParamsKind.HEALTH).Value -= 3;
 			if (!(SelectedBuilding is BuildingHome))
 			{
-				SelectedBuilding.CLose();
+				//SelectedBuilding.CLose();
 				GamePaused = true;
 
 				SelectedBuilding = _instance.HomeBuilding;
@@ -175,9 +178,13 @@ public class GameManager : MonoBehaviour
 			{
 				PlayerStatus = PlayerStatus.NONE;
 			}
-		} 
+		}
 
-
+		if (Parameters.get(ParamsKind.HEALTH).Value <= 0)
+		{
+			SceneManager.LoadScene("Lose");
+			return;
+		}
 		if (SelectedBuilding)
 		{
 			SelectedBuilding.Calculate();
@@ -218,9 +225,20 @@ public class GameManager : MonoBehaviour
 		SelectedBuilding = CurrentWork;
 		DayClass.IncHour();
 	}
-#endregion
 
-#region BIZNESS
+	public void NogoWork()
+	{
+		GUImain.CloseAllDialogs();
+	}
+
+	public void QuitWork()
+	{
+		CurrentWork = null;
+		GUImain.CloseAllDialogs();
+	}
+	#endregion
+
+	#region BIZNESS
 	public void BuyBusiness()
 	{
 		Office office = (Office) SelectedBuilding;

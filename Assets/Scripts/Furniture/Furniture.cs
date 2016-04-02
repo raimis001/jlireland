@@ -4,7 +4,8 @@ using System.Collections;
 public class Furniture : MonoBehaviour
 {
 	public string Name;
-	[Multiline]
+
+	[TextArea(3, 10)]
 	public string Description;
 	public int Price;
 	public float Tired;

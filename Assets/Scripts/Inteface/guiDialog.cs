@@ -21,15 +21,6 @@ public class guiDialog : MonoBehaviour
 
 	float unitilClose = 0;
 
-	void Awake()
-	{
-	}
-	// Use this for initialization
-	void Start()
-	{
-		
-	}
-
 	// Update is called once per frame
 	void Update()
 	{

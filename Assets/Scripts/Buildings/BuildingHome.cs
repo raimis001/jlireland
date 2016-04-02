@@ -7,6 +7,7 @@ public class BuildingHome : Building
 
 	[Header("Interface")]
 	public Text HourText;
+	public guiFurniture FurniturePanel;
 
 	[Header("Furnitures")]
 	[Space(2)]
@@ -24,7 +25,7 @@ public class BuildingHome : Building
 	public override float TiredModifier {
 		get
 		{
-			return GameManager.PlayerStatus == PlayerStatus.SLEEP ? -4 - RestModifier : 0; 
+			return GameManager.PlayerStatus == PlayerStatus.SLEEP ? -4 - RestModifier : -1; 
 		}
 	}
 
@@ -87,6 +88,7 @@ public class BuildingHome : Building
 		GameManager.PlayerStatus = PlayerStatus.SLEEP;
 		GameManager.Instance.HourTime = 1f;
 		GameManager.GamePaused = false;
+		GUImain.CloseAllDialogs();
 		GUImain.ShowDialog(DialogKind.WORKING);
 	}
 
@@ -98,4 +100,50 @@ public class BuildingHome : Building
 		GUImain.CloseAllDialogs();
 	}
 
+	public override void OpenActionDialog()
+	{
+		Furniture furniture = Beds[CurrentBed];
+		if (furniture == null)
+		{
+			return;
+		}
+
+		FurniturePanel.CaptionText.text = furniture.Name;
+		FurniturePanel.NoteText.text = furniture.Description;
+		FurniturePanel.TiredText.text = furniture.Tired.ToString();
+		FurniturePanel.StatusText.text = "0%";
+
+		GUImain.ShowDialog(DialogKind.FURNITURE);
+	}
+
+	public void SwitchFurniture(int toggle)
+	{
+		Furniture furniture = null;
+		switch (toggle)
+		{
+			case 0:
+				furniture = Beds[CurrentBed];
+				break;
+			case 1:
+				furniture = Shelfs[CurrentShelf];
+				break;
+			case 2:
+				furniture = Freezers[CurrentFreezer];
+				break;
+			case 3:
+				furniture = Centers[CurrentCenter];
+				break;
+		}
+
+		if (furniture == null)
+		{
+			return;
+		}
+
+		FurniturePanel.CaptionText.text = furniture.Name;
+		FurniturePanel.NoteText.text = furniture.Description;
+		FurniturePanel.TiredText.text = furniture.Tired.ToString();
+		FurniturePanel.StatusText.text = "0%";
+
+	}
 }

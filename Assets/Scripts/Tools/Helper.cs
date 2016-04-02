@@ -48,7 +48,8 @@ public enum DialogKind
 	FREELANCER = 6,
 	NEED_REST = 7,
 	BAR = 8,
-	GYM = 9
+	GYM = 9,
+	FURNITURE = 10
 }
 
 public static class Helper

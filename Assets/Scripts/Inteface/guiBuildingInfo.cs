@@ -2,25 +2,16 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class guiBuildingInfo : MonoBehaviour
+public class guiBuildingInfo : guiDialog
 {
 
-	public Text Caption;
-	public Text Description;
 
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
+	public override void Open()
 	{
 		if (GameManager.SelectedBuilding)
 		{
-			if (Caption) Caption.text = GameManager.SelectedBuilding.Name;
-			if (Description) Description.text = GameManager.SelectedBuilding.Description;
+			if (CaptionText) CaptionText.text = GameManager.SelectedBuilding.Name;
+			if (NoteText) NoteText.text = GameManager.SelectedBuilding.Description;
 		}
 	}
 }

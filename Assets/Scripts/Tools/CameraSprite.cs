@@ -48,15 +48,15 @@ public class CameraSprite : MonoBehaviour
 				{
 					// wider than tall
 					imgScale.x = worldScreenWidth / width;
-					imgScale.y = imgScale.x * ratio.y;
+					imgScale.y = imgScale.x;//imgScale.x * ratio.y;
 				}
 				else
 				{
 					// taller than wide
 					imgScale.y = worldScreenHeight / height;
-					imgScale.x = imgScale.y * ratio.x;
-				}
+					imgScale.x = imgScale.y;//imgScale.y * ratio.x;
 			}
+		}
 			else
 			{
 				imgScale.x = worldScreenWidth / width;

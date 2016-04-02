@@ -28,6 +28,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11407832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36,11 +37,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 105192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe450ec3135458143b85576e0ff2daea, type: 3}
+  m_Script: {fileID: 11500000, guid: c033dc29e1430064eb988b13497af719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Gulta vulgaris
-  Description: 
+  Name: "Gulta parast\u0101"
+  Description: "Matracis ciets, spilvens mazi\u0146\u0161, bet t\u0101 \u012Bpa\u0161i
+    nav par ko s\u016Bdz\u0113ties, izgul\u0113ties var un tas \u0161obr\u012Bd ir
+    galvenais."
   Price: 500
   Tired: 1
 --- !u!1001 &100100000
